@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Inter } from 'next/font/google'
 import { Lexend } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 // const inter = Inter({ subsets: ['latin'] })
 const lexend = Lexend({
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lexend.className} max-w-[100rem] mx-auto`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
