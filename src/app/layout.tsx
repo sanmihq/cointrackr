@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 
 // const inter = Inter({ subsets: ['latin'] })
 const lexend = Lexend({
@@ -25,7 +27,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lexend.className} max-w-[100rem] mx-auto`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div>
+            {/* <div className="w-60">
+              <Sidebar />
+            </div> */}
+            <div className="flex-1 flex flex-col gap-24">
+              <div className="z-50">
+                <Header />
+              </div>
+              <div>{children}</div>
+            </div>
+          </div>
+        </Providers>
       </body>
     </html>
   );
