@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-// import { Inter } from 'next/font/google'
-import { Lexend } from "next/font/google";
+// import { Lexend } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
+import App from "./app";
 
-// const inter = Inter({ subsets: ['latin'] })
-const lexend = Lexend({
+// const lexend = Lexend({
+//   subsets: ["latin"],
+//   display: "swap",
+//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+// });
+
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -25,20 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${lexend.className} max-w-[100rem] mx-auto`}>
+    <html lang="en" className="bg-[#090d16] text-white">
+      <body className={`${poppins.className} max-w-[100rem] mx-auto`}>
         <Providers>
-          <div>
-            {/* <div className="w-60">
-              <Sidebar />
-            </div> */}
-            <div className="flex-1 flex flex-col gap-24">
-              <div className="z-50">
-                <Header />
-              </div>
-              <div>{children}</div>
-            </div>
-          </div>
+          <App />
         </Providers>
       </body>
     </html>

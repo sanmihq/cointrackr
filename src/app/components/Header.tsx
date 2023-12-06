@@ -7,7 +7,7 @@ import UserProfile from "./UserProfile";
 export default function Header() {
   return (
     <>
-      <nav className="flex items-center justify-between p-6 border-b border-gray-500 fixed top-0 right-0 left-0 bg-black">
+      <nav className="flex items-center justify-between p-6 border-b border-gray-600 w-full">
         <div className="w-[30%]">
           <Search />
         </div>
