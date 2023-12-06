@@ -12,6 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Tooltip } from "@nextui-org/react";
 
 type SidebarProps = {
   expanded: boolean;
@@ -69,21 +70,30 @@ export default function Sidebar({ expanded, toggleSidebar }: SidebarProps) {
         <div>
           <ul className="flex flex-col gap-3 mt-10">
             {menu.map((item, index) => (
-              <li key={index}>
-                <Link
-                  href={item.href}
-                  className={`flex items-center gap-2 ${
-                    pathname.startsWith(item.href)
-                      ? "bg-[#10182D] border-[#5982FE] text-[#5982FE]"
-                      : "hover:bg-gray-800"
-                  } ${
-                    expanded ? "justify-start" : "justify-center"
-                  } border-l-2 border-transparent py-2.5 px-2 rounded-sm`}
-                >
-                  <div className="h-5 w-5">{item.icon}</div>
-                  {expanded && <h3 className="text-xs">{item.name}</h3>}
-                </Link>
-              </li>
+              <Tooltip
+                key={index}
+                placement="right"
+                content={item.name}
+                color="primary"
+                size="sm"
+                className={`${expanded && "hidden"}`}
+              >
+                <li key={index}>
+                  <Link
+                    href={item.href}
+                    className={`flex items-center gap-2 ${
+                      pathname.startsWith(item.href)
+                        ? "bg-[#10182D] border-[#5982FE] text-[#5982FE]"
+                        : "hover:bg-gray-800"
+                    } ${
+                      expanded ? "justify-start" : "justify-center"
+                    } border-l-2 border-transparent py-2.5 px-2 rounded-sm`}
+                  >
+                    <div className="h-5 w-5">{item.icon}</div>
+                    {expanded && <h3 className="text-xs">{item.name}</h3>}
+                  </Link>
+                </li>
+              </Tooltip>
             ))}
           </ul>
         </div>
